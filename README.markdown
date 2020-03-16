@@ -20,7 +20,7 @@ When done, the resulting program will be run, and you'll be given a quick summar
 
 ## Movements
 
-### Movement the First –
+### Movement the First – Giving Names to Things
 
 ### Movement the Second –
 
