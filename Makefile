@@ -1,12 +1,6 @@
 PRODUCT=harness
 
-OFLAGS=
-
-ifeq ($(RELEASE), 1)
-	OFLAGS=-Ofast -DRELEASE
-else
-	OFLAGS=-O0
-endif
+OFLAGS=-Ofast -DRELEASE
 
 CC=clang++
 CFLAGS=$(OFLAGS) -Wall -Iinc -stdlib=libc++ -std=c++17
@@ -38,7 +32,7 @@ $(ODIR):
 $(BDIR):
 	mkdir -p $(BDIR)
 
-$(ODIR)/%.o: src/%.cpp
+$(ODIR)/%.o: src/%.cpp Makefile
 	$(CC) -MMD -c -g -std=c++17 -o $@ $< $(CFLAGS)
 
 .PHONY: clean
