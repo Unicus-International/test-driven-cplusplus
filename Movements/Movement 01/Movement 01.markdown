@@ -19,7 +19,7 @@ int main() {
 }
 
 constexpr int exit_status() {
-  constexpr auto status { 0 };
+  constexpr auto status { 0 } ;
 
   return status;
 }
@@ -100,7 +100,7 @@ Following the function declaration is a function definition. In most respects, t
 The first line in the function body declares a constant, and initialises it. Again, this consists of a number of parts, where some are known and some are new:
 
 ```c++
-constexpr auto greeting { "Hello world!" }; /*
+constexpr auto greeting { "Hello world!" } ; /*
            ^    ^       ^  ^             ^
           type name     | string literal |
                         initialiser braces
@@ -143,13 +143,13 @@ Previously, a pair of functions were offered as examples, without offering defin
 
 ```c++
 constexpr int subtract(int minuend, int subtrahend) {
-  constexpr auto difference { minuend - subtrahend };
+  constexpr auto difference { minuend - subtrahend } ;
 
   return difference;
 }
 
 int multiply(int a, int b) {
-  constexpr auto product { a * b };
+  constexpr auto product { a * b } ;
 
   return product;
 }

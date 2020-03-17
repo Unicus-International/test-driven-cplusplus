@@ -15,7 +15,7 @@ namespace movement_01 {
       EXPECT( fibonacci_number( 8) ==                  21 );
       EXPECT( fibonacci_number(92) == 7540113804746346429 );
     } },
-  };
+  } ;
 
   const std::vector<lest::test> extra_tests {
     { CASE("Lucas numbers") {
@@ -30,6 +30,6 @@ namespace movement_01 {
       EXPECT( lucas_number( 8)     ==                  47 );
       EXPECT( lucas_number(90)     == 6440026026380244498 );
     } },
-  };
+  } ;
 
 }
