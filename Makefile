@@ -3,7 +3,7 @@ PRODUCT=harness
 OFLAGS=-Ofast -DRELEASE
 
 CC=clang++
-CFLAGS=$(OFLAGS) -Wall -Iinc -stdlib=libc++ -std=c++17
+CFLAGS=$(OFLAGS) -Wall -Iinc -IModules/lest/include -stdlib=libc++ -std=c++17
 LFLAGS=-stdlib=libc++
 
 TDIR=
@@ -23,6 +23,10 @@ TEST = $(patsubst %,$(TODIR)/%.test,$(_TEST))
 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
+run:
+	make -s $(BDIR)/$(PRODUCT)
+	$(BDIR)/$(PRODUCT)
+
 $(BDIR)/$(PRODUCT): $(ODIR) $(OBJ) $(BDIR)
 	$(CC) -o $@ $(OBJ) $(LFLAGS)
 
@@ -35,7 +39,7 @@ $(BDIR):
 $(ODIR)/%.o: src/%.cpp Makefile
 	$(CC) -MMD -c -g -std=c++17 -o $@ $< $(CFLAGS)
 
-.PHONY: clean
+.PHONY: clean run
 
 clean:
 	rm -f $(DDIR)/*.d $(ODIR)/*.o $(BDIR)/$(PRODUCT)
