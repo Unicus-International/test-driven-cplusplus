@@ -47,13 +47,84 @@ constexpr double multiply(double a, double b) {
 }
 ```
 
-The fourth and final kind of fundamental type are the integral types, which we have been using in Movement the First without further comment. These are types like `int`, `std::uint64_t` and friends, `bool`, and `char8_t`. These types represent discrete values such as truth values (`bool`), character values in strings (`char8_t`) or the value of numbers (`int`).
+The fourth and final kind of fundamental type are the integral types, which we have been using in Movement the First without further comment. These are types like `int`, `std::uint64_t` and friends, `bool`, and `char`. These types represent discrete values such as truth values (`bool`), character values in strings (`char`) or the value of numbers (`int`).
 
 These are also arithmetic types, but the degree to which arithmetic operations make sense for them varies.
 
 ```c++
-constexpr int     { 3 * 4 }        ; // makes sense
-constexpr bool    { true * false } ; // does not
-constexpr char8_t { 'a' * 'b' }    ; // really does not
+constexpr int  { 3 * 4 }        ; // makes sense
+constexpr bool { true * false } ; // does not make sense
+constexpr char { 'a' * 'b' }    ; // really does not make sense
 ```
 
+### Compound Types
+
+Compound types come in several different varieties; only two of which will be covered in this movement.
+
+The first variety are reference types, such as references and pointers. These will be explored in a later movement, but in short they represent ways to refer to objects.
+
+The second variety are array types, which are contiguous runs of objects of a single type. These will not be explored in this tutorial.
+
+The third variety are function types, which will be explored in a later movement.
+
+The fourth variety are enumeration types. These are used to give names to constants of an underlying (integral) type, and group related constants together. For example, a temperature converter might use the following enumeration:
+
+```c++
+enum struct temperature_scale : char { /*
+             ^                   ^
+            name     underlying type */
+  celcius    = 'C',
+  kelvin     = 'K',
+  fahrenheit = 'F',
+  rankine    = 'R',
+};
+```
+
+The fifth and final variety are class types. These are used to group related values (called members) together in a single object to manipulate as a whole. Class types are introduced by one of three keywords, `struct`, `class` or `union`, the latter two of which will be explored in a later movement. Members of a class type come in two broad varieties, `static` and non-`static` members; `static` members will also be explored in a later movement.
+
+Members of a class can be either types, data members, or member functions, including special member functions such as operators, constructors and destructors. Continuing the hypothetical temperature converter from above, an object type that might be used could look something like this:
+
+```c++
+struct temperature {
+  // member type
+  enum struct scale : char {
+    celcius    = 'C',
+    kelvin     = 'K',
+    fahrenheit = 'F',
+    rankine    = 'R',
+  };
+
+  // constructor
+  constexpr temperature(double v, scale s) : _value { v }, _scale { s } { }
+
+  // member functions
+  constexpr temperature convert(scale target_scale) {
+    // ...
+  }
+
+  constexpr double value(scale target_scale) {
+    // ...
+  }
+
+  // data members
+  const double _value;
+  const scale  _scale;
+}
+```
+
+In general, the members of types are referenced using the namespace operator (`::`) and accessed using member operators (`.` and `->`):
+
+```c++
+int main() {
+  constexpr double input_value { /* ... */ } ;
+
+  // referencing member type using ::                    v
+  constexpr temperature::scale input_scale  { temperature::scale::celcius    } ;
+  constexpr temperature::scale output_scale { temperature::scale::fahrenheit } ;
+
+  constexpr temperature input_temperature { input_value, input_scale };
+
+  // accessing member function with the . operator      v
+  constexpr temperature output_value { input_temperature.value(output_scale) } ;
+}
+```
