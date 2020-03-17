@@ -1,0 +1,3 @@
+[submodule "Modules/lest"]
+	path = Modules/lest
+	url = https://github.com/martinmoene/lest
