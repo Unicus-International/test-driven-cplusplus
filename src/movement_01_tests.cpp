@@ -19,16 +19,16 @@ namespace movement_01 {
 
   const std::vector<lest::test> extra_tests {
     { CASE("Lucas numbers") {
-      EXPECT( lucas_number( 0) ==                     2 );
-      EXPECT( lucas_number( 1) ==                     1 );
-      EXPECT( lucas_number( 2) ==                     3 );
-      EXPECT( lucas_number( 3) ==                     4 );
-      EXPECT( lucas_number( 4) ==                     7 );
-      EXPECT( lucas_number( 5) ==                    11 );
-      EXPECT( lucas_number( 6) ==                    18 );
-      EXPECT( lucas_number( 7) ==                    29 );
-      EXPECT( lucas_number( 8) ==                    47 );
-      EXPECT( lucas_number(90) ==   6440026026380244498 );
+      EXPECT( lucas_number( 0)     ==                   2 );
+      EXPECT( lucas_number( 1)     ==                   1 );
+      EXPECT( lucas_number( 2)     ==                   3 );
+      EXPECT( lucas_number( 3)     ==                   4 );
+      EXPECT( lucas_number( 4)     ==                   7 );
+      EXPECT( lucas_number( 5)     ==                  11 );
+      EXPECT( lucas_number( 6)     ==                  18 );
+      EXPECT( lucas_number( 7)     ==                  29 );
+      EXPECT( lucas_number( 8)     ==                  47 );
+      EXPECT( lucas_number(90)     == 6440026026380244498 );
     } },
   };
 
