@@ -21,6 +21,16 @@ namespace movement_02 {
         EXPECT( std::abs(energy(  1.0, energy::scale::kJ ).value( energy::scale::kcal ) -  0.239) < ε );
         EXPECT( std::abs(energy( 10.0, energy::scale::kJ ).value( energy::scale::kcal ) -  2.39 ) < ε );
     } },
+    { CASE("kilojoule identities") {
+        EXPECT( std::abs(energy(  0.0, energy::scale::kJ ).value( energy::scale::kJ ) -  0.0 ) < ε );
+        EXPECT( std::abs(energy(  1.0, energy::scale::kJ ).value( energy::scale::kJ ) -  1.0 ) < ε );
+        EXPECT( std::abs(energy( 10.0, energy::scale::kJ ).value( energy::scale::kJ ) - 10.0 ) < ε );
+    } },
+    { CASE("kilocalorie identities") {
+        EXPECT( std::abs(energy(  0.0, energy::scale::kcal ).value( energy::scale::kcal ) -  0.0 ) < ε );
+        EXPECT( std::abs(energy(  1.0, energy::scale::kcal ).value( energy::scale::kcal ) -  1.0 ) < ε );
+        EXPECT( std::abs(energy( 10.0, energy::scale::kcal ).value( energy::scale::kcal ) - 10.0 ) < ε );
+    } },
   } ;
 
 }

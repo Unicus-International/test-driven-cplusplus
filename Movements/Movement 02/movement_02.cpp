@@ -17,7 +17,7 @@ namespace movement_02 {
     }
 
     constexpr double value(scale target_scale) {
-      return 0.0;
+      return _scale == target_scale ? _value : convert(target_scale)._value;
     }
 
     const double _value;
