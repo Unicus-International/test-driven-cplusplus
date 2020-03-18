@@ -40,11 +40,11 @@ public: // open for anyone to use
 
   constexpr temperature(double v, scale s) : _value { v }, _scale { s } { }
 
-  constexpr temperature convert(scale target_scale) {
+  constexpr temperature convert(scale target_scale) const {
     // ...
   }
 
-  constexpr double value(scale target_scale) {
+  constexpr double value(scale target_scale) const {
     // ...
   }
 
@@ -59,3 +59,13 @@ There are three access levels in C++: `private`, `protected` and `public`. `priv
 `public` members of a type form the public interface, so it's good to be very careful about what you add to it, especially if your code is used by other people. (For the purposes of this discussion, "me, in the future" is another person.)
 
 Up until now, the examples have used the `struct` class type specifier so as to avoid having to talk about access specifiers, but in most cases the use of the `class` class type specifier is appropriate. The two specifiers are identical, but for one important difference: In a `class`, the default access specifier is `private`, and in a `struct` the default access specifier is `public`.
+
+## `struct` vs. `class`: When to use?
+
+For deciding on which to use, there are some options.
+
+One easy way of doing things is to always declare things as class, and make anything that needs to be public `public`. This approach has the benefit that all declarations by default are `private`, making it harder to accidentally include things in the public interface that don't belong.
+
+Similarly, everything can be declared as a `struct`, and all access specifiers added explicitly. This is foundationally the same approach as declaring everything as a `class`, but runs the risk of putting things by accident into the public interface.
+
+A third option, better than either, is using `struct` and `class` in a way that communicates _intent_: Make types that mostly or exclusively have public fields `struct`s, and types that mostly have private fields `class`es.
