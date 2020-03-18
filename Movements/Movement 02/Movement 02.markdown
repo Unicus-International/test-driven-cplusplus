@@ -112,6 +112,17 @@ struct temperature {
 }
 ```
 
+Of special note is the form of the constructor:
+
+```c++
+constexpr temperature(double v, scale s) : _value { v }, _scale { s } { } /*
+           ^                              ^                            ^
+          name (same as class)           initialiser list             function body
+*/
+```
+
+This is much like a normal function, but between the declaration and the function body, we have a member initialiser list. This is much like the initialisers we've already seen for constants, except that the type and constant expression specifier aren't necessary. In the above example, the field `_value` is initialised with the value of `v`, and the field `_scale` is initialised with the value of `s`.
+
 In general, the members of types are referenced using the namespace operator (`::`) and accessed using member operators (`.` and `->`):
 
 ```c++
