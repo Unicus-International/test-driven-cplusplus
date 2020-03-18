@@ -117,7 +117,7 @@ Of special note is the form of the constructor:
 ```c++
 constexpr temperature(double v, scale s) : _value { v }, _scale { s } { } /*
            ^                              ^                            ^
-          name (same as class)           initialiser list             function body
+          name (same as type)            initialiser list             function body
 */
 ```
 
