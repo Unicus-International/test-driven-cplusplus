@@ -98,11 +98,11 @@ struct temperature {
   constexpr temperature(double v, scale s) : _value { v }, _scale { s } { }
 
   // member functions (also called "methods")
-  constexpr temperature convert(scale target_scale) {
+  constexpr temperature convert(scale target_scale) const {
     // ...
   }
 
-  constexpr double value(scale target_scale) {
+  constexpr double value(scale target_scale) const {
     // ...
   }
 
