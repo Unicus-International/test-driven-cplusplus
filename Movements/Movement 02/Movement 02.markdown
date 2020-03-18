@@ -97,7 +97,7 @@ struct temperature {
   // constructor
   constexpr temperature(double v, scale s) : _value { v }, _scale { s } { }
 
-  // member functions
+  // member functions (also called "methods")
   constexpr temperature convert(scale target_scale) {
     // ...
   }
@@ -106,7 +106,7 @@ struct temperature {
     // ...
   }
 
-  // data members
+  // data members (also called "fields")
   const double _value;
   const scale  _scale;
 }
@@ -124,7 +124,7 @@ int main() {
 
   constexpr temperature input_temperature { input_value, input_scale };
 
-  // accessing member function with the . operator      v
-  constexpr temperature output_value { input_temperature.value(output_scale) } ;
+  // accessing member function with the . operator v
+  constexpr double output_value { input_temperature.value(output_scale) } ;
 }
 ```
