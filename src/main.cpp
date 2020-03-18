@@ -15,7 +15,6 @@ const test_vector tests {
   { "movement 01 basic task", movement_01::basic_tests },
   { "movement 01 extra task", movement_01::extra_tests },
   { "movement 02 basic task", movement_02::basic_tests },
-  { "movement 02 extra task", movement_02::extra_tests },
 };
 
 int main(int argc, char **argv) {

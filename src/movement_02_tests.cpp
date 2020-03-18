@@ -6,7 +6,7 @@ namespace movement_02 {
 
   namespace {
 
-    constexpr double ε = 1.0e-5;
+    constexpr double ε = 1.0e-3;
 
   }
 
@@ -20,12 +20,6 @@ namespace movement_02 {
         EXPECT( std::abs(energy(  0.0, energy::scale::kJ ).value( energy::scale::kcal ) -  0.0  ) < ε );
         EXPECT( std::abs(energy(  1.0, energy::scale::kJ ).value( energy::scale::kcal ) -  0.239) < ε );
         EXPECT( std::abs(energy( 10.0, energy::scale::kJ ).value( energy::scale::kcal ) -  2.39 ) < ε );
-    } },
-  } ;
-
-  const std::vector<lest::test> extra_tests {
-    { CASE("Lucas numbers") {
-      EXPECT( 1 == 1 );
     } },
   } ;
 
